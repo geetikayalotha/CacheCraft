@@ -1,0 +1,8 @@
+# CacheCraft sample trace: a support assistant handling repeated and near-duplicate prompts.
+# Fields: id, ts, route, prompt, cost_ms, tokens_in, meta
+{"id": "req-000001", "ts": 1725200000.0, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for the leadership team", "cost_ms": 920, "tokens_in": 1180, "meta": {"tenant": "acme"}}
+{"id": "req-000002", "ts": 1725200001.5, "route": "chat.completions", "prompt": "Please summarize the Q3 revenue report for the leadership team", "cost_ms": 910, "tokens_in": 1185, "meta": {"tenant": "acme"}}
+{"id": "req-000003", "ts": 1725200003.0, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for leadership", "cost_ms": 880, "tokens_in": 1120, "meta": {"tenant": "acme"}}
+{"id": "req-000004", "ts": 1725200004.2, "route": "embeddings", "prompt": "Embed the product catalog description for search indexing", "cost_ms": 210, "tokens_in": 64, "meta": {"tenant": "acme"}}
+{"id": "req-000005", "ts": 1725200005.9, "route": "embeddings", "prompt": "Embed the product catalog description for the search index", "cost_ms": 205, "tokens_in": 66, "meta": {"tenant": "acme"}}
+{"id": "req-000006", "ts": 1725200007.1, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about refund policy", "cost_ms": 760, "tokens_in": 540, "meta": {"tenant": "globex"}}
