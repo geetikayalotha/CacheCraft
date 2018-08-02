@@ -17,3 +17,22 @@ Config schema
         { "kind": "overlap", "params": { "threshold": 0.6 } },
         { "kind": "route",   "params": { "threshold": 0.55 } }
       ]
+    }
+
+If no config is supplied the CLI falls back to :func:`default_config`, which
+compares all four built-in strategies with sensible defaults.
+"""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+from .strategy import Strategy, available, build_strategy
+
+
+class ConfigError(ValueError):
+    """Raised when a bench config is structurally invalid."""
+
