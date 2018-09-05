@@ -15,20 +15,3 @@ import (
 	"os"
 
 	craft "cachecraft/craft"
-)
-
-func main() {
-	tracePath := flag.String("trace", "", "path to a JSONL request trace")
-	threshold := flag.Float64("threshold", 0.6, "overlap similarity threshold")
-	hitCost := flag.Float64("hit-cost", 5.0, "latency of a cache hit in ms")
-	keepStop := flag.Bool("keep-stopwords", false, "do not drop filler tokens")
-	flag.Parse()
-
-	if *tracePath == "" {
-		fmt.Fprintln(os.Stderr, "error: -trace is required")
-		os.Exit(2)
-	}
-
-	f, err := os.Open(*tracePath)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "error: %v\n", err)

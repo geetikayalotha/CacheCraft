@@ -11,3 +11,16 @@ runner, or an air-gapped box.
 
 Public surface
 --------------
+- :func:`cachecraft.trace.load_trace` — parse a JSONL request trace.
+- :func:`cachecraft.strategy.build_strategy` — construct a policy from config.
+- :func:`cachecraft.engine.replay` — replay a trace through a policy.
+- :func:`cachecraft.report.render_report` — turn results into a report.
+
+The command line entry point lives in :mod:`cachecraft.cli`.
+"""
+
+from __future__ import annotations
+
+__all__ = [
+    "__version__",
+    "trace",
