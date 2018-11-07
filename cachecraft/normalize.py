@@ -72,3 +72,40 @@ class Signals:
     canonical: str
     tokens: tuple[str, ...]
     token_set: frozenset[str] = field(compare=False)
+    fingerprint: str = field(compare=False)
+
+
+def canonicalize(text: str) -> str:
+    """Return a canonical single-line representation of *text*.
+
+    Steps: Unicode NFKC folding, lower-casing, punctuation removal, and
+    whitespace collapse. The result is stable across platforms because NFKC
+    is defined by the Unicode standard, not the host locale.
+    """
+
+    folded = unicodedata.normalize("NFKC", text)
+    lowered = folded.casefold()
+    without_punct = _PUNCT.sub(" ", lowered)
+    collapsed = _WHITESPACE.sub(" ", without_punct).strip()
+    return collapsed
+
+
+def tokenize(text: str, *, drop_stopwords: bool = True) -> tuple[str, ...]:
+    """Tokenize *text* into content tokens.
+
+    Tokens are maximal runs of ASCII letters and digits taken from the
+    canonical form. When *drop_stopwords* is true, common filler words are
+    removed to sharpen overlap comparisons.
+    """
+
+    canonical = canonicalize(text)
+    raw = _TOKEN.findall(canonical)
+    if drop_stopwords:
+        return tuple(tok for tok in raw if tok not in _STOPWORDS)
+    return tuple(raw)
+
+
+def fingerprint(canonical: str) -> str:
+    """Return a stable hex fingerprint for a canonical string."""
+
+    return hashlib.sha1(canonical.encode("utf-8")).hexdigest()
