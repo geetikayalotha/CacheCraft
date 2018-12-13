@@ -6,3 +6,8 @@
 {"id": "req-000004", "ts": 1725200004.2, "route": "embeddings", "prompt": "Embed the product catalog description for search indexing", "cost_ms": 210, "tokens_in": 64, "meta": {"tenant": "acme"}}
 {"id": "req-000005", "ts": 1725200005.9, "route": "embeddings", "prompt": "Embed the product catalog description for the search index", "cost_ms": 205, "tokens_in": 66, "meta": {"tenant": "acme"}}
 {"id": "req-000006", "ts": 1725200007.1, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about refund policy", "cost_ms": 760, "tokens_in": 540, "meta": {"tenant": "globex"}}
+{"id": "req-000007", "ts": 1725200008.4, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about the refund policy", "cost_ms": 770, "tokens_in": 548, "meta": {"tenant": "globex"}}
+{"id": "req-000008", "ts": 1725200010.0, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about the return policy", "cost_ms": 765, "tokens_in": 545, "meta": {"tenant": "globex"}}
+{"id": "req-000009", "ts": 1725200011.3, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for the leadership team", "cost_ms": 915, "tokens_in": 1180, "meta": {"tenant": "acme"}}
+{"id": "req-000010", "ts": 1725200012.8, "route": "moderation", "prompt": "Classify this message for policy violations and hate speech", "cost_ms": 120, "tokens_in": 40, "meta": {"tenant": "globex"}}
+{"id": "req-000011", "ts": 1725200014.0, "route": "moderation", "prompt": "Classify this message for policy violations and hate speech content", "cost_ms": 122, "tokens_in": 41, "meta": {"tenant": "globex"}}
