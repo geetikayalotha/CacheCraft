@@ -24,3 +24,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `exact` and `overlap` policies for large-trace throughput.
 
 ### Changed
+- Trade-off score reweighted to `0.5*avoided + 0.3*hit_rate + 0.2*quality`
+  so avoided latency, not raw hit rate, drives the ranking.
+
+## [0.5.0] - 2025-08-18
+
+### Added
+- `overlap` strategy using Jaccard similarity over token sets with a
+  configurable acceptance threshold and bounded LRU store.
+- Match `quality` score in `[0, 1]` carried by every hit so reports can
+  penalize reckless fuzzy matching.
+
+### Changed
+- Replay engine now models a fixed `hit_cost_ms` per hit and reports
+  `avoided_ms` floored at zero, reflecting that caches are not free.
