@@ -38,3 +38,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Replay engine now models a fixed `hit_cost_ms` per hit and reports
   `avoided_ms` floored at zero, reflecting that caches are not free.
+
+## [0.4.0] - 2025-08-04
+
+### Added
+- `prefix` strategy keyed on the first N normalized tokens for templated
+  prompts that share a stem.
+- Bench configuration loader (`config.py`) so an experiment can be versioned
+  as JSON alongside its trace.
+
+### Fixed
+- Deterministic canonicalization via Unicode NFKC folding, ensuring signals
+  are byte-identical across platforms and locales.
+
