@@ -1,0 +1,5 @@
+{
+  "hit_cost_ms": 5.0,
+  "drop_stopwords": true,
+  "strategies": [
+    { "kind": "exact" },
