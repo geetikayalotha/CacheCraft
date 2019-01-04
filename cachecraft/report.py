@@ -44,3 +44,27 @@ def summarize(result: ReplayResult, baseline_cost_ms: float) -> dict[str, Any]:
         "requests": result.total,
         "hits": result.hits,
         "hit_rate": result.hit_rate,
+        "mean_quality": result.mean_quality,
+        "avoided_ms": result.avoided_ms,
+        "served_ms": result.served_ms,
+        "tradeoff_score": tradeoff_score(result, baseline_cost_ms),
+        "per_route": result.per_route(),
+    }
+
+
+def render_json(results: list[ReplayResult], baseline_cost_ms: float) -> str:
+    """Render a comparison document as pretty JSON."""
+
+    summaries = [summarize(r, baseline_cost_ms) for r in results]
+    summaries.sort(key=lambda s: s["tradeoff_score"], reverse=True)
+    doc = {
+        "tool": "cachecraft",
+        "baseline_cost_ms": round(baseline_cost_ms, 3),
+        "winner": summaries[0]["strategy"] if summaries else None,
+        "strategies": summaries,
+    }
+    return json.dumps(doc, indent=2)
+
+
+def _bar(value: float, width: int = 20) -> str:
+    filled = int(round(value * width))
