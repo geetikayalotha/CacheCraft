@@ -55,22 +55,3 @@ class BenchConfig:
     def build_all(self) -> list[Strategy]:
         return [spec.build() for spec in self.strategies]
 
-
-def default_config() -> BenchConfig:
-    """Return a config comparing every built-in strategy."""
-
-    specs = [StrategySpec(kind=name) for name in available()]
-    return BenchConfig(strategies=specs)
-
-
-def parse_config(raw: dict[str, Any]) -> BenchConfig:
-    """Validate and build a :class:`BenchConfig` from a mapping."""
-
-    if "strategies" not in raw or not isinstance(raw["strategies"], list):
-        raise ConfigError("config must contain a 'strategies' array")
-    specs: list[StrategySpec] = []
-    for i, entry in enumerate(raw["strategies"]):
-        if not isinstance(entry, dict) or "kind" not in entry:
-            raise ConfigError(f"strategies[{i}] must be an object with a 'kind'")
-        specs.append(
-            StrategySpec(kind=str(entry["kind"]), params=dict(entry.get("params", {})))
