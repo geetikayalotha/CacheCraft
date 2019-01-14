@@ -32,3 +32,37 @@ from .trace import TraceError, load_trace, trace_stats
 
 def _cmd_strategies(_: argparse.Namespace) -> int:
     for name in available():
+        print(name)
+    return 0
+
+
+def _cmd_inspect(args: argparse.Namespace) -> int:
+    try:
+        requests = load_trace(args.trace)
+    except (TraceError, OSError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    stats = trace_stats(requests)
+    print(json.dumps(stats, indent=2))
+    return 0
+
+
+def _cmd_signals(args: argparse.Namespace) -> int:
+    sig = derive(args.prompt)
+    out = {
+        "canonical": sig.canonical,
+        "tokens": list(sig.tokens),
+        "fingerprint": sig.fingerprint,
+        "prefix_key": prefix_key(sig.canonical, words=args.words),
+    }
+    print(json.dumps(out, indent=2))
+    return 0
+
+
+def _cmd_bench(args: argparse.Namespace) -> int:
+    try:
+        requests = load_trace(args.trace)
+    except (TraceError, OSError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+
