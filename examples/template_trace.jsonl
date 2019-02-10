@@ -1,3 +1,1 @@
 # A tiny trace exercising templated prompts that share a long common prefix.
-{"id": "t-1", "ts": 1.0, "route": "chat", "prompt": "Translate the following text to French: hello", "cost_ms": 400}
-{"id": "t-2", "ts": 2.0, "route": "chat", "prompt": "Translate the following text to French: goodbye", "cost_ms": 405}
