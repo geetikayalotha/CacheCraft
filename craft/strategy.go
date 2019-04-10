@@ -30,35 +30,3 @@ func NewExact() *ExactStrategy { return &ExactStrategy{byFP: map[string]string{}
 
 // Name returns the strategy identifier.
 func (e *ExactStrategy) Name() string { return "exact" }
-
-// Lookup returns a match when the fingerprint has been seen before.
-func (e *ExactStrategy) Lookup(s Signals, _ string) (Match, bool) {
-	if k, ok := e.byFP[s.Fingerprint]; ok {
-		return Match{Key: k, Quality: 1.0, Kind: "exact"}, true
-	}
-	return Match{}, false
-}
-
-// Insert records a fingerprint for future lookups.
-func (e *ExactStrategy) Insert(key string, s Signals, _ string) {
-	if _, ok := e.byFP[s.Fingerprint]; !ok {
-		e.byFP[s.Fingerprint] = key
-	}
-}
-
-// OverlapStrategy accepts the best token-set match above a threshold, optionally
-// scoped to the request route.
-type OverlapStrategy struct {
-	threshold   float64
-	routeScoped bool
-	entries     []entry
-}
-
-// NewOverlap builds a token-overlap strategy.
-func NewOverlap(threshold float64, routeScoped bool) *OverlapStrategy {
-	return &OverlapStrategy{threshold: threshold, routeScoped: routeScoped}
-}
-
-// Name returns the strategy identifier.
-func (o *OverlapStrategy) Name() string {
-	if o.routeScoped {
