@@ -2,16 +2,3 @@
 # Fields: id, ts, route, prompt, cost_ms, tokens_in, meta
 {"id": "req-000001", "ts": 1725200000.0, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for the leadership team", "cost_ms": 920, "tokens_in": 1180, "meta": {"tenant": "acme"}}
 {"id": "req-000002", "ts": 1725200001.5, "route": "chat.completions", "prompt": "Please summarize the Q3 revenue report for the leadership team", "cost_ms": 910, "tokens_in": 1185, "meta": {"tenant": "acme"}}
-{"id": "req-000003", "ts": 1725200003.0, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for leadership", "cost_ms": 880, "tokens_in": 1120, "meta": {"tenant": "acme"}}
-{"id": "req-000004", "ts": 1725200004.2, "route": "embeddings", "prompt": "Embed the product catalog description for search indexing", "cost_ms": 210, "tokens_in": 64, "meta": {"tenant": "acme"}}
-{"id": "req-000005", "ts": 1725200005.9, "route": "embeddings", "prompt": "Embed the product catalog description for the search index", "cost_ms": 205, "tokens_in": 66, "meta": {"tenant": "acme"}}
-{"id": "req-000006", "ts": 1725200007.1, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about refund policy", "cost_ms": 760, "tokens_in": 540, "meta": {"tenant": "globex"}}
-{"id": "req-000007", "ts": 1725200008.4, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about the refund policy", "cost_ms": 770, "tokens_in": 548, "meta": {"tenant": "globex"}}
-{"id": "req-000008", "ts": 1725200010.0, "route": "chat.completions", "prompt": "Draft a friendly reply to a customer asking about the return policy", "cost_ms": 765, "tokens_in": 545, "meta": {"tenant": "globex"}}
-{"id": "req-000009", "ts": 1725200011.3, "route": "chat.completions", "prompt": "Summarize the Q3 revenue report for the leadership team", "cost_ms": 915, "tokens_in": 1180, "meta": {"tenant": "acme"}}
-{"id": "req-000010", "ts": 1725200012.8, "route": "moderation", "prompt": "Classify this message for policy violations and hate speech", "cost_ms": 120, "tokens_in": 40, "meta": {"tenant": "globex"}}
-{"id": "req-000011", "ts": 1725200014.0, "route": "moderation", "prompt": "Classify this message for policy violations and hate speech content", "cost_ms": 122, "tokens_in": 41, "meta": {"tenant": "globex"}}
-{"id": "req-000012", "ts": 1725200015.5, "route": "chat.completions", "prompt": "Explain the difference between latency and throughput in one paragraph", "cost_ms": 640, "tokens_in": 300, "meta": {"tenant": "initech"}}
-{"id": "req-000013", "ts": 1725200016.9, "route": "chat.completions", "prompt": "Explain the difference between throughput and latency in one paragraph", "cost_ms": 650, "tokens_in": 305, "meta": {"tenant": "initech"}}
-{"id": "req-000014", "ts": 1725200018.2, "route": "embeddings", "prompt": "Embed the product catalog description for search indexing", "cost_ms": 208, "tokens_in": 64, "meta": {"tenant": "acme"}}
-{"id": "req-000015", "ts": 1725200019.7, "route": "chat.completions", "prompt": "Write release notes for version 2.0 highlighting the new dashboard", "cost_ms": 980, "tokens_in": 720, "meta": {"tenant": "initech"}}
