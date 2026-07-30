@@ -19,3 +19,66 @@
     </radialGradient>
     <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
   </defs>
+
+  <rect width="720" height="240" fill="url(#slate)"/>
+
+  <!-- slate rivet grid -->
+  <g fill="#3a444f">
+    <circle cx="24" cy="24" r="3"/><circle cx="696" cy="24" r="3"/>
+    <circle cx="24" cy="216" r="3"/><circle cx="696" cy="216" r="3"/>
+  </g>
+
+  <!-- forge glow -->
+  <ellipse cx="200" cy="150" rx="120" ry="46" fill="url(#ember)" opacity="0.55">
+    <animate attributeName="opacity" values="0.35;0.75;0.35" dur="2.6s" repeatCount="indefinite"/>
+    <animate attributeName="rx" values="112;128;112" dur="2.6s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <!-- anvil -->
+  <g fill="url(#copper)" stroke="#5c3218" stroke-width="1.5">
+    <path d="M120 168 h160 v14 h-20 l-8 18 h-104 l-8 -18 h-20 z"/>
+    <rect x="150" y="146" width="100" height="24" rx="4"/>
+    <path d="M250 146 h44 l-10 22 h-34 z"/>
+  </g>
+
+  <!-- token sparks rising into keys -->
+  <g font-family="monospace" font-size="13" fill="#ffd9a0">
+    <text x="196" y="120" text-anchor="middle" opacity="0">summarize
+      <animate attributeName="y" values="140;92" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2.2s" repeatCount="indefinite"/>
+    </text>
+    <text x="230" y="120" text-anchor="middle" opacity="0">report
+      <animate attributeName="y" values="146;88" dur="2.8s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2.8s" begin="0.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="170" y="120" text-anchor="middle" opacity="0">refund
+      <animate attributeName="y" values="150;96" dur="2.4s" begin="1.1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="2.4s" begin="1.1s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- forged cache key chip -->
+  <g transform="translate(470,96)">
+    <rect x="0" y="0" width="210" height="60" rx="8" fill="#222a31" stroke="url(#copper)" stroke-width="2"/>
+    <text x="16" y="26" font-family="monospace" font-size="13" fill="#e8a26a">key = sha1(canonical)</text>
+    <text x="16" y="46" font-family="monospace" font-size="12" fill="#9fb0bf">quality = jaccard(a,b)</text>
+    <rect x="0" y="0" width="210" height="60" rx="8" fill="none" stroke="#ffd9a0" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0.9;0" dur="2.6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- title -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="360" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#e8a26a">CacheCraft</text>
+    <text x="360" y="66" text-anchor="middle" font-size="14" fill="#9fb0bf" letter-spacing="2">SEMANTIC CACHE STRATEGY BENCH</text>
+  </g>
+
+  <!-- hammer strike -->
+  <g transform="translate(300,70)">
+    <g>
+      <rect x="-6" y="0" width="12" height="70" rx="3" fill="#7a5233"/>
+      <rect x="-26" y="-16" width="52" height="26" rx="4" fill="url(#copper)" stroke="#5c3218"/>
+      <animateTransform attributeName="transform" type="rotate" values="-38 0 70; 6 0 70; -38 0 70" dur="1.3s" repeatCount="indefinite"/>
+    </g>
+  </g>
+</svg>
