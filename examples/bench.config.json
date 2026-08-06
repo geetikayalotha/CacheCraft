@@ -3,3 +3,8 @@
   "drop_stopwords": true,
   "strategies": [
     { "kind": "exact" },
+    { "kind": "prefix", "params": { "words": 5 } },
+    { "kind": "overlap", "params": { "threshold": 0.6, "capacity": 512 } },
+    { "kind": "route", "params": { "threshold": 0.55, "capacity": 512 } }
+  ]
+}
