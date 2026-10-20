@@ -30,6 +30,23 @@ from .strategy import available
 from .trace import TraceError, load_trace, trace_stats
 
 
+def _positive_int(raw: str) -> int:
+    try:
+        value = int(raw)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"{raw!r} is not an integer")
+    if value < 1:
+        raise argparse.ArgumentTypeError("must be >= 1")
+    return value
+
+
+def _write_report(path: str, text: str) -> None:
+    target = Path(path)
+    if target.parent and not target.parent.exists():
+        target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(text, encoding="utf-8")
+
+
 def _cmd_strategies(_: argparse.Namespace) -> int:
     for name in available():
         print(name)
@@ -89,7 +106,11 @@ def _cmd_bench(args: argparse.Namespace) -> int:
 
     rendered = render_report(results, baseline_cost, fmt=args.format)
     if args.out:
-        Path(args.out).write_text(rendered + "\n", encoding="utf-8")
+        try:
+            _write_report(args.out, rendered + "\n")
+        except OSError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
         print(f"wrote {args.out}")
     else:
         print(rendered)
@@ -117,7 +138,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_sig = sub.add_parser("signals", help="show derived signals for a prompt")
     p_sig.add_argument("prompt", help="prompt text to analyze")
-    p_sig.add_argument("--words", type=int, default=6, help="prefix width")
+    p_sig.add_argument("--words", type=_positive_int, default=6, help="prefix width (>= 1)")
     p_sig.set_defaults(func=_cmd_signals)
 
     p_strat = sub.add_parser("strategies", help="list built-in strategies")
